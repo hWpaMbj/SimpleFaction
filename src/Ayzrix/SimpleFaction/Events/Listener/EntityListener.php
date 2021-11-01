@@ -21,7 +21,7 @@ use pocketmine\Player;
 
 class EntityListener implements Listener {
 
-    public function EntityDamageByEntity(EntityDamageByEntityEvent $event) {
+    public function EntityDamageByEntity(EntityDamageByEntityEvent $event): void {
         $player = $event->getEntity();
         $victime = $event->getDamager();
         if ($player instanceof Player and $victime instanceof Player) {

@@ -21,7 +21,7 @@ use pocketmine\level\format\Chunk;
 
 class PlayerMove implements Listener {
 
-    public function PlayerMove (PlayerMoveEvent $event) {
+    public function PlayerMove (PlayerMoveEvent $event): void {
         $player = $event->getPlayer();
         if (in_array($player->getLevel()->getFolderName(), Utils::getIntoConfig("faction_worlds"))) {
             $fromPos = $player->getLevel()->getChunkAtPosition($event->getFrom());

@@ -22,7 +22,7 @@ use pocketmine\level\format\Chunk;
 
 class BlockListener implements Listener {
 
-    public function BlockBreak(BlockBreakEvent $event) {
+    public function BlockBreak(BlockBreakEvent $event): void{
         $player = $event->getPlayer();
         if (in_array($player->getLevel()->getFolderName(), Utils::getIntoConfig("faction_worlds"))) {
             $chunk = $player->getLevel()->getChunkAtPosition($event->getBlock());
@@ -40,7 +40,7 @@ class BlockListener implements Listener {
         }
     }
 
-    public function BlockPlace(BlockPlaceEvent $event) {
+    public function BlockPlace(BlockPlaceEvent $event): void {
         $player = $event->getPlayer();
         if (in_array($player->getLevel()->getFolderName(), Utils::getIntoConfig("faction_worlds"))) {
             $chunk = $player->getLevel()->getChunkAtPosition($event->getBlock());

@@ -28,14 +28,14 @@ use pocketmine\Player;
 
 class PlayerListener implements Listener {
 
-    public function PlayerJoin(PlayerJoinEvent $event) {
+    public function PlayerJoin(PlayerJoinEvent $event): void {
         $player = $event->getPlayer();
         if (!FactionsAPI::hasLanguages($player)) {
             FactionsAPI::setLanguages($player, Utils::getIntoLang("default-language"));
         }
     }
 
-    public function PlayerDeath(PlayerDeathEvent $event) {
+    public function PlayerDeath(PlayerDeathEvent $event): void {
         $player = $event->getPlayer();
         if ($player instanceof Player) {
             $cause = $player->getLastDamageCause();
@@ -62,7 +62,7 @@ class PlayerListener implements Listener {
         }
     }
 
-    public function PlayerInteract(PlayerInteractEvent $event) {
+    public function PlayerInteract(PlayerInteractEvent $event): void {
         $player = $event->getPlayer();
         $block = $event->getBlock();
         $item = $event->getItem();
@@ -124,7 +124,7 @@ class PlayerListener implements Listener {
         }
     }
 
-    public function PlayerChat(PlayerChatEvent $event) {
+    public function PlayerChat(PlayerChatEvent $event): void {
         $player = $event->getPlayer();
         $message = $event->getMessage();
         if (isset(FactionsAPI::$chat[$player->getName()])) {

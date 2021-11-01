@@ -22,10 +22,9 @@ use pocketmine\utils\Config;
 
 class Utils {
 
-    /** @var null|\MySQLi  */
-    public static $db = null;
+    public static ?\MySQLi $db = null;
 
-    private static $config = [];
+    private static array $config = [];
 
     public static function getPrefix(): string {
         return self::getIntoConfig("PREFIX");
@@ -48,15 +47,15 @@ class Utils {
         return strtolower(self::getIntoConfig("PROVIDER"));
     }
 
-    public static function loadConfig() {
+    public static function loadConfig(): void {
         self::$config = Main::getInstance()->getConfig()->getAll();
     }
 
-    public static function getIntoConfig(string $value) {
+    public static function getIntoConfig(string $value): void {
         return self::$config[$value];
     }
 
-    public static function getIntoLang(string $value) {
+    public static function getIntoLang(string $value): void {
         $config = new Config(Main::getInstance()->getDataFolder() . "lang.yml", Config::YAML);
         return $config->get($value);
     }
@@ -94,7 +93,7 @@ class Utils {
         }
     }
 
-    public static function query(string $text) {
+    public static function query(string $text): void {
         Server::getInstance()->getAsyncPool()->submitTask(new QueryTask($text));
     }
 

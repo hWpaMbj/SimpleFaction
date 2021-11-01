@@ -22,15 +22,9 @@ use pocketmine\Server;
 
 class WarsTask extends Task {
 
-    /**
-     * @var string
-     */
-    private $faction;
+    private string $faction;
 
-    /**
-     * @var string
-     */
-    private $faction2;
+    private string $faction2;
 
     /**
      * WarsTask constructor.
@@ -46,7 +40,7 @@ class WarsTask extends Task {
     /**
      * @param int $currentTick
      */
-    public function onRun(int $currentTick) {
+    public function onRun(int $currentTick): void {
         if (FactionsAPI::$Wars[$this->faction]["kills"] > FactionsAPI::$Wars[$this->faction2]["kills"]) {
             foreach (FactionsAPI::getAllPlayers($this->faction) as $player) {
                 if (Server::getInstance()->getPlayer($player)) {

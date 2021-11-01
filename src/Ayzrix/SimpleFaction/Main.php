@@ -31,13 +31,11 @@ use pocketmine\plugin\PluginBase;
 
 class Main extends PluginBase {
 
-    /** @var Main */
-    private static $instance;
+    private static Main $instance;
 
-    /** @var EconomyAPI $economyAPI */
-    private static $economyAPI;
+    private static EconomyAPI $economyAPI;
 
-    public function onEnable() {
+    public function onEnable(): void {
         self::$instance = $this;
         $this->saveDefaultConfig();
         $this->saveResource("lang.yml");
@@ -73,7 +71,7 @@ class Main extends PluginBase {
         }
     }
 
-    public function onDisable() {
+    public function onDisable(): void {
         foreach ($this->getServer()->getLevels() as $level) {
             foreach ($level->getEntities() as $entity) {
                 if ($entity instanceof FloatingTextEntity) {
@@ -83,7 +81,7 @@ class Main extends PluginBase {
         }
     }
 
-    private function initDatabase() {
+    private function initDatabase(): void {
         if (Utils::getProvider() === "mysql") {
             $db = new \MySQLi(Utils::getIntoConfig("mysql_address"), Utils::getIntoConfig("mysql_user"), Utils::getIntoConfig("mysql_password"), Utils::getIntoConfig("mysql_db"));
             Utils::$db = $db;
@@ -109,7 +107,7 @@ class Main extends PluginBase {
         return self::$economyAPI;
     }
 
-    public function initFloatingText() {
+    public function initFloatingText(): void {
         Entity::registerEntity(FloatingTextEntity::class, true);
         $coordinates = Utils::getIntoConfig("floating_text_coordinates");
         $coordinates = explode(":", $coordinates);

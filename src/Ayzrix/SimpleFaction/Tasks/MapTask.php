@@ -25,14 +25,13 @@ class MapTask extends Task {
      * @param int $currentTick
      * @return bool
      */
-    public function onRun(int $currentTick): bool {
-        if (empty(FactionsAPI::$map)) return false;
+    public function onRun(int $currentTick): void {
+        if (empty(FactionsAPI::$map)) return;
         foreach (FactionsAPI::$map as $name => $bool) {
             $player = Server::getInstance()->getPlayer($name);
             if ($player instanceof Player) {
                 $player->sendMessage(implode(TextFormat::EOL, FactionsAPI::getMap($player)));
             } else unset(FactionsAPI::$map[$name]);
         }
-        return true;
     }
 }

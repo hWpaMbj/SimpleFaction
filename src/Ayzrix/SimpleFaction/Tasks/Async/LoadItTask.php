@@ -21,8 +21,8 @@ use pocketmine\Server;
 
 class LoadItTask extends AsyncTask {
 
-    private $provider;
-    private $db;
+    private string $provider;
+    private array $db;
 
     public function __construct() {
         $this->provider = Utils::getProvider();
@@ -31,7 +31,7 @@ class LoadItTask extends AsyncTask {
         } else $this->db = array(Main::getInstance()->getDataFolder() . "SimpleFaction.db");
     }
 
-    public function onRun() {
+    public function onRun(): void {
         $provider = $this->provider;
         $results = [];
 
@@ -87,7 +87,7 @@ class LoadItTask extends AsyncTask {
     /**
      * @param Server $server
      */
-    public function onCompletion(Server $server) {
+    public function onCompletion(Server $server): void {
         $result = $this->getResult();
 
         if(!empty($result)) {

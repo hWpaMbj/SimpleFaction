@@ -24,50 +24,35 @@ use pocketmine\utils\TextFormat;
 
 class FactionsAPI {
 
-    /** @var array $moving */
-    public static $moving = [];
+    public static array $moving = [];
 
-    /** @var array $faction */
-    public static $faction = [];
+    public static array $faction = [];
 
-    /** @var array $player */
-    public static $player = [];
+    public static array $player = [];
 
-    /** @var array $home */
-    public static $home = [];
+    public static array $home = [];
 
-    /** @var array $lang */
-    public static $lang = [];
+    public static array $lang = [];
 
-    /** @var array $claim */
-    public static $claim = [];
+    public static array $claim = [];
 
-    /** @var array $invitation */
-    public static $invitation = [];
+    public static array $invitation = [];
 
-    /** @var array $invitationTimeout */
-    public static $invitationTimeout = [];
+    public static array $invitationTimeout = [];
 
-    /** @var array $Alliesinvitation */
-    public static $Alliesinvitation = [];
+    public static array $Alliesinvitation = [];
 
-    /** @var array $AlliesinvitationTimeout */
-    public static $AlliesinvitationTimeout = [];
+    public static array $AlliesinvitationTimeout = [];
 
-    /** @var array $chat */
-    public static $chat = [];
+    public static array $chat = [];
 
-    /** @var array $map */
-    public static $map = [];
+    public static array $map = [];
 
-    /** @var array $border */
-    public static $border = [];
+    public static array $border = [];
 
-    /** @var array $Warsinvitation */
-    public static $Warsinvitation = [];
+    public static array $Warsinvitation = [];
 
-    /** @var array $Wars */
-    public static $Wars = [];
+    public static array $Wars = [];
 
     const MAP_KEY_CHARS = "\\/#?ç¬£$%=&^ABCDEFGHJKLMNOPQRSTUVWXYZÄÖÜÆØÅ1234567890abcdeghjmnopqrsuvwxyÿzäöüæøåâêîûô";
     const MAP_WIDTH = 48;
@@ -402,7 +387,7 @@ class FactionsAPI {
      * @param Player $player
      * @param string $faction
      */
-    public static function deleteClaim(Player $player, string $faction) {
+    public static function deleteClaim(Player $player, string $faction): void {
         $chunk = $player->getLevel()->getChunkAtPosition($player);
         $chunkX = $chunk->getX();
         $chunkZ = $chunk->getZ();
@@ -705,7 +690,7 @@ class FactionsAPI {
         return self::$faction[$faction]["allies"]?? [];
     }
 
-    public static function factionMessage(Player $player, string $message) {
+    public static function factionMessage(Player $player, string $message): void {
         $faction = self::getFaction($player->getName());
         foreach (self::getAllPlayers($faction) as $target) {
             $target = Server::getInstance()->getPlayer($target);
@@ -717,7 +702,7 @@ class FactionsAPI {
         }
     }
 
-    public static function allyMessage(Player $player, string $message) {
+    public static function allyMessage(Player $player, string $message) : void {
         $faction = self::getFaction($player->getName());
         foreach (self::getAllies($faction) as $ally) {
             if (self::existsFaction($ally)) {

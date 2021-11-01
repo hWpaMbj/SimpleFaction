@@ -27,8 +27,8 @@ class BorderTask extends Task {
      * @param int $currentTick
      * @return bool
      */
-    public function onRun(int $currentTick): bool {
-        if (empty(FactionsAPI::$border)) return false;
+    public function onRun(int $currentTick): void {
+        if (empty(FactionsAPI::$border)) return;
         foreach (FactionsAPI::$border as $name => $bool) {
             $player = Server::getInstance()->getPlayer($name);
             if ($player instanceof Player) {
@@ -62,6 +62,5 @@ class BorderTask extends Task {
                 }
             } else unset(FactionsAPI::$border[$name]);
         }
-        return true;
     }
 }

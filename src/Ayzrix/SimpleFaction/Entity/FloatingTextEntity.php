@@ -11,15 +11,15 @@ use pocketmine\event\entity\EntityDamageEvent;
 class FloatingTextEntity extends Entity {
 
     const NETWORK_ID = Ids::NPC;
-    public $height = 0.1;
-    public $width = 0.1;
+    public float $height = 0.1;
+    public float $width = 0.1;
     public $gravity = 0;
 
-    public function getName() : string {
+    public function getName(): string {
         return "FloatingTextEntity";
     }
 
-    public function initEntity() : void {
+    public function initEntity(): void {
         parent::initEntity();
         $this->setImmobile(true);
         $this->setNameTagAlwaysVisible(true);
@@ -30,7 +30,7 @@ class FloatingTextEntity extends Entity {
         $source->setCancelled(true);
     }
 
-    public function onUpdate(int $currentTick) : bool {
+    public function onUpdate(int $currentTick): bool {
         $factions = FactionsAPI::getAllPowers();
         arsort($factions);
         $i = 1;
