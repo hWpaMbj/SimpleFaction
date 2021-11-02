@@ -17,7 +17,6 @@ use Ayzrix\SimpleFaction\API\FactionsAPI;
 use Ayzrix\SimpleFaction\Main;
 use Ayzrix\SimpleFaction\Utils\Utils;
 use pocketmine\scheduler\AsyncTask;
-use pocketmine\Server;
 
 class LoadItTask extends AsyncTask {
 
@@ -84,10 +83,7 @@ class LoadItTask extends AsyncTask {
         $this->setResult($results);
     }
 
-    /**
-     * @param Server $server
-     */
-    public function onCompletion(Server $server): void {
+    public function onCompletion(): void {
         $result = $this->getResult();
 
         if(!empty($result)) {

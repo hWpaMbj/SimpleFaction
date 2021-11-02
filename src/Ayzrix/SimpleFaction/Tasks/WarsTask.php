@@ -14,9 +14,8 @@
 namespace Ayzrix\SimpleFaction\Tasks;
 
 use Ayzrix\SimpleFaction\API\FactionsAPI;
-use Ayzrix\SimpleFaction\Main;
 use Ayzrix\SimpleFaction\Utils\Utils;
-use pocketmine\Player;
+use pocketmine\player\Player;
 use pocketmine\scheduler\Task;
 use pocketmine\Server;
 
@@ -40,11 +39,11 @@ class WarsTask extends Task {
     /**
      * @param int $currentTick
      */
-    public function onRun(int $currentTick): void {
+    public function onRun(): void {
         if (FactionsAPI::$Wars[$this->faction]["kills"] > FactionsAPI::$Wars[$this->faction2]["kills"]) {
             foreach (FactionsAPI::getAllPlayers($this->faction) as $player) {
-                if (Server::getInstance()->getPlayer($player)) {
-                    $player = Server::getInstance()->getPlayer($player);
+                if (Server::getInstance()->getPlayerExact($player)) {
+                    $player = Server::getInstance()->getPlayerExact($player);
                     if ($player instanceof Player) {
                         $player->sendMessage(Utils::getMessage($player, "WIN_WARS_FACTION_BROADCAST", array($this->faction2)));
                     }
@@ -52,8 +51,8 @@ class WarsTask extends Task {
             }
 
             foreach (FactionsAPI::getAllPlayers($this->faction2) as $player) {
-                if (Server::getInstance()->getPlayer($player)) {
-                    $player = Server::getInstance()->getPlayer($player);
+                if (Server::getInstance()->getPlayerExact($player)) {
+                    $player = Server::getInstance()->getPlayerExact($player);
                     if ($player instanceof Player) {
                         $player->sendMessage(Utils::getMessage($player, "LOST_WARS_FACTION_BROADCAST", array($this->faction)));
                     }
@@ -61,8 +60,8 @@ class WarsTask extends Task {
             }
         } else if (FactionsAPI::$Wars[$this->faction2] > FactionsAPI::$Wars[$this->faction]) {
             foreach (FactionsAPI::getAllPlayers($this->faction2) as $player) {
-                if (Server::getInstance()->getPlayer($player)) {
-                    $player = Server::getInstance()->getPlayer($player);
+                if (Server::getInstance()->getPlayerExact($player)) {
+                    $player = Server::getInstance()->getPlayerExact($player);
                     if ($player instanceof Player) {
                         $player->sendMessage(Utils::getMessage($player, "WIN_WARS_FACTION_BROADCAST", array($this->faction)));
                     }
@@ -70,8 +69,8 @@ class WarsTask extends Task {
             }
 
             foreach (FactionsAPI::getAllPlayers($this->faction) as $player) {
-                if (Server::getInstance()->getPlayer($player)) {
-                    $player = Server::getInstance()->getPlayer($player);
+                if (Server::getInstance()->getPlayerExact($player)) {
+                    $player = Server::getInstance()->getPlayerExact($player);
                     if ($player instanceof Player) {
                         $player->sendMessage(Utils::getMessage($player, "LOST_WARS_FACTION_BROADCAST", array($this->faction2)));
                     }

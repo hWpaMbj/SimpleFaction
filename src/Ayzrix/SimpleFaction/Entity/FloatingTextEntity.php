@@ -4,30 +4,39 @@ namespace Ayzrix\SimpleFaction\Entity;
 
 use Ayzrix\SimpleFaction\API\FactionsAPI;
 use Ayzrix\SimpleFaction\Utils\Utils;
+use JetBrains\PhpStorm\Pure;
 use pocketmine\entity\Entity;
-use pocketmine\entity\EntityIds as Ids;
+use pocketmine\entity\EntitySizeInfo;
 use pocketmine\event\entity\EntityDamageEvent;
+use pocketmine\nbt\tag\CompoundTag;
+use pocketmine\network\mcpe\protocol\types\entity\EntityIds;
 
 class FloatingTextEntity extends Entity {
 
-    const NETWORK_ID = Ids::NPC;
     public float $height = 0.1;
     public float $width = 0.1;
     public $gravity = 0;
+
+    public static function getNetworkTypeId() : string{ return EntityIds::NPC; }
+
+    #[Pure] protected function getInitialSizeInfo() : EntitySizeInfo{
+        return new EntitySizeInfo(0.1, 0.1); //TODO: eye height ??
+    }
 
     public function getName(): string {
         return "FloatingTextEntity";
     }
 
-    public function initEntity(): void {
-        parent::initEntity();
+    public function initEntity(CompoundTag $nbt): void
+    {
+        parent::initEntity($nbt);
         $this->setImmobile(true);
         $this->setNameTagAlwaysVisible(true);
         $this->setScale(0.001);
     }
 
     public function attack(EntityDamageEvent $source): void {
-        $source->setCancelled(true);
+        $source->cancel();
     }
 
     public function onUpdate(int $currentTick): bool {
