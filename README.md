@@ -1,11 +1,12 @@
 [![](https://poggit.pmmp.io/shield.api/SimpleFaction)](https://poggit.pmmp.io/p/SimpleFaction) [![](https://poggit.pmmp.io/shield.dl.total/SimpleFaction)](https://poggit.pmmp.io/p/SimpleFaction)
 # SimpleFaction
-PM4 is currently under development, do not hesitate to send us some information
-Our dear developer Ayzrix left us on October 18, 2021. To pay homage to him, I would like his best open source plugin to be updated. Please help me to keep it updated...
-Thanks in advance 
-<br>
-Do you want to contact me? come on Revolt I created my server there
+<p>
+PM4 is currently under development, do not hesitate to send us some information <br>
+Our dear developer Ayzrix left us on October 18, 2021. To pay homage to him, I would like his best open source plugin to be updated. Please help me to keep it updated...<br>
+Thanks in advance <br>
+Do you want to contact me? come on Revolt I created my server there<br>
 Revolt link: https://app.revolt.chat/invite/eHSfMG8e
+ </p>
 
 ###### Simple faction plugin replacing FactionsPro which is no longer updated.
 
