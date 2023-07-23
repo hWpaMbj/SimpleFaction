@@ -34,6 +34,7 @@ class Faction extends Command {
     public function __construct(Main $plugin) {
         $this->pg = $plugin;
         parent::__construct("faction","Faction main command","/f help",["f", "fac"]);
+        $this->setPermission("simplefaction.player");
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args): bool {
