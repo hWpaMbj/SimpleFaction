@@ -4,6 +4,7 @@ description: SimpleFaction plugin
 version: 1.7.0
 main: Ayzrix\SimpleFaction\Main
 api: [5.0.0]
+permissions:
   simplefaction.player:
     default: true
     description: "default permission"
